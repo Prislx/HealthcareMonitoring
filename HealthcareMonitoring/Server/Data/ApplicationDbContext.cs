@@ -1,4 +1,5 @@
 ﻿using HealthcareMonitoring.Server.Models;
+using HealthcareMonitoring.Shared.Domain;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
@@ -17,5 +18,12 @@ namespace HealthcareMonitoring.Server.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Diagnosis> Diagnoses { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<PrescMed> PrescMeds { get; set; }
     }
 }
