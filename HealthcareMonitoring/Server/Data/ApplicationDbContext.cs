@@ -1,4 +1,5 @@
-﻿using HealthcareMonitoring.Server.Models;
+﻿using HealthcareMonitoring.Server.Configurations.Entities;
+using HealthcareMonitoring.Server.Models;
 using HealthcareMonitoring.Shared.Domain;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
@@ -25,5 +26,20 @@ namespace HealthcareMonitoring.Server.Data
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<PrescMed> PrescMeds { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfiguration(new StaffSeedConfiguration());
+            builder.ApplyConfiguration(new AppointmentSeedConfiguration());
+            builder.ApplyConfiguration(new DiagnosisSeedConfiguration());
+            builder.ApplyConfiguration(new MedicineSeedConfiguration());
+            builder.ApplyConfiguration(new PatientSeedConfiguration());
+            builder.ApplyConfiguration(new PrescMedSeedConfiguration());
+            builder.ApplyConfiguration(new PrescriptionSeedConfiguration());
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
+            builder.ApplyConfiguration(new UserRoleSeedConfiguration());
+            builder.ApplyConfiguration(new UserSeedConfiguration());
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace HealthcareMonitoring.Shared.Domain
 {
     public class Medicine : BaseDomainModel
     {
+        public string MedName { get; set; }
         public string Description { get; set; }
         public DateTime ExpiryDate { get; set; }
         public int Quantity { get; set; }
