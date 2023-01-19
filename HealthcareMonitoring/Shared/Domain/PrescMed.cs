@@ -13,6 +13,6 @@ namespace HealthcareMonitoring.Shared.Domain
         public virtual Medicine Medicine { get; set; }
         public int PrescriptionID { get; set; }
         public virtual Prescription Prescription { get; set; }
-        public int dosage { get; set; }
+        public string dosage { get; set; }
     }
 }

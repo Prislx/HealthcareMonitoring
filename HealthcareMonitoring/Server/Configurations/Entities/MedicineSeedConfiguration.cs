@@ -1,5 +1,4 @@
-﻿
-using HealthcareMonitoring.Shared.Domain;
+﻿using HealthcareMonitoring.Shared.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,27 +8,25 @@ using System.Threading.Tasks;
 
 namespace HealthcareMonitoring.Server.Configurations.Entities
 {
-    public class StaffSeedConfiguration : IEntityTypeConfiguration<Staff>
+    public class MedicineSeedConfiguration : IEntityTypeConfiguration<Medicine>
     {
-        public void Configure(EntityTypeBuilder<Staff> builder)
+        public void Configure(EntityTypeBuilder<Medicine> builder)
         {
             builder.HasData(
 
-                new Staff
+                new Medicine
                 {
                     Id = 1,
-                    StaffName = "Lucy",
-                    Gender = "Female",
-                    ContactNo = 98765678,
-                    Address = "Blk 40 upper changi road",
-                    Email = "lucy@gmail.com",
+                    MedName= "Azithromycin",
+                    Description = "Antibiotic for bacterial infection",
+                    ExpiryDate = new DateTime(2023,6,2),
+                    Quantity = 200,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
                     UpdatedBy = "System"
                 });
-
-            
+           
         }
     }
 }

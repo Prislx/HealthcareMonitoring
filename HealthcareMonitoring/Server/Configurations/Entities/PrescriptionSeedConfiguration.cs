@@ -12,7 +12,8 @@ namespace HealthcareMonitoring.Server.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<Prescription> builder)
         {
-            throw new NotImplementedException();
+            
+            
         }
     }
 }
