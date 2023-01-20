@@ -12,7 +12,22 @@ namespace HealthcareMonitoring.Server.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<Patient> builder)
         {
-            throw new NotImplementedException();
+            builder.HasData(
+            new Patient
+            {
+                Id = 1,
+                PatientName = "Paterson",
+                NRIC = "S1234567A",
+                Gender = "Male",
+                Address = "Blk 123 Paterville Ave 3 ",
+                Email = "Paterson@mail.com",
+                ContactNo = 123456789 ,
+                DOB = 12-3-1980,
+                DateCreated = DateTime.Now,
+                DateUpdated = DateTime.Now,
+                CreatedBy = "System",
+                UpdatedBy = "System"
+            });
         }
     }
 }
