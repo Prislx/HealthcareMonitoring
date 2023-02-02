@@ -18,8 +18,6 @@ namespace HealthcareMonitoring.Server.Configurations.Entities
                {
                    Id = 1,
                    MedQty = 10,
-                   MedicineID = 1,
-                   PrescriptionID = 1,
                    dosage = "2 per day, after meal",
                    DateCreated = DateTime.Now,
                    DateUpdated = DateTime.Now,
@@ -27,7 +25,7 @@ namespace HealthcareMonitoring.Server.Configurations.Entities
                    UpdatedBy = "System"
                });
 
-            throw new NotImplementedException();
+
         }
     }
 }

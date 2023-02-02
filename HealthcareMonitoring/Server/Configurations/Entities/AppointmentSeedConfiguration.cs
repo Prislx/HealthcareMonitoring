@@ -14,17 +14,15 @@ namespace HealthcareMonitoring.Server.Configurations.Entities
             builder.HasData(
             new Appointment
             {
-                Id= 1,
-                Description ="Sore throat ",
+                Id = 1,
+                Description = "Sore throat ",
                 AppdateTime = new DateTime(2022, 5, 2),
-                PatientId = 1,
-                StaffId = 1,
                 DateCreated = DateTime.Now,
                 DateUpdated = DateTime.Now,
                 CreatedBy = "System",
                 UpdatedBy = "System"
             });
-           
+
         }
     }
 }
