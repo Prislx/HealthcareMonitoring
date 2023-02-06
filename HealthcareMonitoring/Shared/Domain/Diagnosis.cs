@@ -9,11 +9,11 @@ namespace HealthcareMonitoring.Shared.Domain
     public class Diagnosis : BaseDomainModel
     {
         public string Description { get; set; }
-        public DateTime dateTime { get; set; }
+        public DateTime DateTime { get; set; }
         public int AppointmentId { get; set; }
         public int PrescriptionId { get; set; }
-        public virtual  Prescription Prescription { get; set; }
-        public virtual Appointment Appointment { get; set; }
+        public virtual List<Prescription> Prescription { get; set; }
+        public virtual List<Appointment>  Appointment { get; set; }
     }
 
     

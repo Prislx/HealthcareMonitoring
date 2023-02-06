@@ -94,7 +94,7 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ac56cec2-daea-4fe4-83c1-cf3a8b43b6d7",
+                            ConcurrencyStamp = "d521f132-6c70-40c9-ab08-1d280b6daf93",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -102,9 +102,9 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKzC72/EpdumcGk6BJU71BPzihkcvDVQSYucXY7GuG8LVvUWmR2PMxbIM/CCLIaXBg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECZmppW8Cfx8Pvf9sHLnv8KiFuhjaQ4OvQZnX4NYtAp0c6zgNC/GDd8DChBkYkb5MQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c1a959ef-5d0a-449b-9e91-2aad5f10a128",
+                            SecurityStamp = "2d02a8ff-0771-427e-b410-fce458fbe2ac",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -132,6 +132,9 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("DiagnosisId")
+                        .HasColumnType("int");
+
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 
@@ -143,6 +146,8 @@ namespace HealthcareMonitoring.Server.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DiagnosisId");
+
                     b.HasIndex("PatientId");
 
                     b.HasIndex("StaffId");
@@ -152,14 +157,14 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             AppdateTime = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 1, 20, 10, 44, 20, 170, DateTimeKind.Local).AddTicks(7031),
-                            DateUpdated = new DateTime(2023, 1, 20, 10, 44, 20, 170, DateTimeKind.Local).AddTicks(7042),
-                            Description = "Sore throat ",
-                            PatientId = 1,
-                            StaffId = 1,
+                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(2050),
+                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(2065),
+                            Description = "Sore throat",
+                            PatientId = 2,
+                            StaffId = 2,
                             UpdatedBy = "System"
                         });
                 });
@@ -180,6 +185,9 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
@@ -192,29 +200,22 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("dateTime")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AppointmentId");
-
-                    b.HasIndex("PrescriptionId");
 
                     b.ToTable("Diagnoses");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            AppointmentId = 0,
+                            Id = 2,
+                            AppointmentId = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 1, 20, 10, 44, 20, 170, DateTimeKind.Local).AddTicks(9547),
-                            DateUpdated = new DateTime(2023, 1, 20, 10, 44, 20, 170, DateTimeKind.Local).AddTicks(9553),
-                            Description = "Back of throat is inflamed ",
-                            PrescriptionId = 0,
-                            UpdatedBy = "System",
-                            dateTime = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(4923),
+                            DateTime = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(4928),
+                            Description = "Inflamed throat with sores",
+                            PrescriptionId = 2,
+                            UpdatedBy = "System"
                         });
                 });
 
@@ -256,13 +257,13 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 1, 20, 10, 44, 20, 171, DateTimeKind.Local).AddTicks(2182),
-                            DateUpdated = new DateTime(2023, 1, 20, 10, 44, 20, 171, DateTimeKind.Local).AddTicks(2188),
-                            Description = "Antibiotic for bacterial infection",
-                            ExpiryDate = new DateTime(2023, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            MedName = "Azithromycin",
+                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(7457),
+                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(7462),
+                            Description = "helps with body pain",
+                            ExpiryDate = new DateTime(2023, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MedName = "brufen",
                             Quantity = 200,
                             UpdatedBy = "System"
                         });
@@ -315,13 +316,13 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             Address = "Blk 123 Paterville Ave 3 ",
                             ContactNo = 123456789,
                             CreatedBy = "System",
                             DOB = -1971,
-                            DateCreated = new DateTime(2023, 1, 20, 10, 44, 20, 171, DateTimeKind.Local).AddTicks(5200),
-                            DateUpdated = new DateTime(2023, 1, 20, 10, 44, 20, 171, DateTimeKind.Local).AddTicks(5204),
+                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(343),
+                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(347),
                             Email = "Paterson@mail.com",
                             Gender = "Male",
                             NRIC = "S1234567A",
@@ -346,6 +347,9 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Dosage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("MedQty")
                         .HasColumnType("int");
 
@@ -358,29 +362,24 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("dosage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MedicineID");
-
-                    b.HasIndex("PrescriptionID");
 
                     b.ToTable("PrescMeds");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 1, 20, 10, 44, 20, 171, DateTimeKind.Local).AddTicks(7804),
-                            DateUpdated = new DateTime(2023, 1, 20, 10, 44, 20, 171, DateTimeKind.Local).AddTicks(7809),
-                            MedQty = 10,
-                            MedicineID = 1,
-                            PrescriptionID = 1,
-                            UpdatedBy = "System",
-                            dosage = "2 per day, after meal"
+                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(2574),
+                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(2578),
+                            Dosage = "Take 2 a day after meals.",
+                            MedQty = 6,
+                            MedicineID = 2,
+                            PrescriptionID = 2,
+                            UpdatedBy = "System"
                         });
                 });
 
@@ -397,32 +396,42 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("DiagnosisId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PrescMedId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("dateTime")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("DiagnosisId");
+
+                    b.HasIndex("PrescMedId");
 
                     b.ToTable("Prescriptions");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 1, 20, 10, 44, 20, 172, DateTimeKind.Local).AddTicks(22),
-                            DateUpdated = new DateTime(2023, 1, 20, 10, 44, 20, 172, DateTimeKind.Local).AddTicks(27),
+                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(4579),
+                            DateTime = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(4582),
                             Description = "Drink Warm water and take the medicine for 5 days ",
-                            UpdatedBy = "System",
-                            dateTime = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedBy = "System"
                         });
                 });
 
@@ -467,15 +476,15 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Address = "Blk 40 upper changi road",
-                            ContactNo = 98765678,
+                            Id = 2,
+                            Address = "Blk 98 Tampines Ave 3 ",
+                            ContactNo = 99456789,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 1, 20, 10, 44, 20, 168, DateTimeKind.Local).AddTicks(7028),
-                            DateUpdated = new DateTime(2023, 1, 20, 10, 44, 20, 169, DateTimeKind.Local).AddTicks(4571),
-                            Email = "lucy@gmail.com",
-                            Gender = "Female",
-                            StaffName = "Lucy",
+                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 545, DateTimeKind.Local).AddTicks(3217),
+                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 545, DateTimeKind.Local).AddTicks(9557),
+                            Email = "Peter@mail.com",
+                            Gender = "Male",
+                            StaffName = "Peter",
                             UpdatedBy = "System"
                         });
                 });
@@ -613,14 +622,14 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         new
                         {
                             Id = "ad2bcf0c-20db-474f-8407-5a6b159518ba",
-                            ConcurrencyStamp = "b9fa1236-3a13-44c9-933e-2adc4fb0aa0f",
+                            ConcurrencyStamp = "00558650-7d49-4fff-b965-33a2a2f88021",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "bd2bcf0c-20db-474f-8407-5a6b159518bb",
-                            ConcurrencyStamp = "38e22786-39b1-4ed9-a4b2-a12e44bcfc23",
+                            ConcurrencyStamp = "f98dc6a0-375b-44ae-a156-5825ddb3207a",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -743,6 +752,10 @@ namespace HealthcareMonitoring.Server.Data.Migrations
 
             modelBuilder.Entity("HealthcareMonitoring.Shared.Domain.Appointment", b =>
                 {
+                    b.HasOne("HealthcareMonitoring.Shared.Domain.Diagnosis", null)
+                        .WithMany("Appointment")
+                        .HasForeignKey("DiagnosisId");
+
                     b.HasOne("HealthcareMonitoring.Shared.Domain.Patient", "Patient")
                         .WithMany()
                         .HasForeignKey("PatientId")
@@ -760,25 +773,6 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                     b.Navigation("Staff");
                 });
 
-            modelBuilder.Entity("HealthcareMonitoring.Shared.Domain.Diagnosis", b =>
-                {
-                    b.HasOne("HealthcareMonitoring.Shared.Domain.Appointment", "Appointment")
-                        .WithMany()
-                        .HasForeignKey("AppointmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HealthcareMonitoring.Shared.Domain.Prescription", "Prescription")
-                        .WithMany()
-                        .HasForeignKey("PrescriptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Appointment");
-
-                    b.Navigation("Prescription");
-                });
-
             modelBuilder.Entity("HealthcareMonitoring.Shared.Domain.PrescMed", b =>
                 {
                     b.HasOne("HealthcareMonitoring.Shared.Domain.Medicine", "Medicine")
@@ -787,15 +781,18 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HealthcareMonitoring.Shared.Domain.Prescription", "Prescription")
-                        .WithMany()
-                        .HasForeignKey("PrescriptionID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Medicine");
+                });
 
-                    b.Navigation("Prescription");
+            modelBuilder.Entity("HealthcareMonitoring.Shared.Domain.Prescription", b =>
+                {
+                    b.HasOne("HealthcareMonitoring.Shared.Domain.Diagnosis", null)
+                        .WithMany("Prescription")
+                        .HasForeignKey("DiagnosisId");
+
+                    b.HasOne("HealthcareMonitoring.Shared.Domain.PrescMed", null)
+                        .WithMany("Prescription")
+                        .HasForeignKey("PrescMedId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -847,6 +844,18 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HealthcareMonitoring.Shared.Domain.Diagnosis", b =>
+                {
+                    b.Navigation("Appointment");
+
+                    b.Navigation("Prescription");
+                });
+
+            modelBuilder.Entity("HealthcareMonitoring.Shared.Domain.PrescMed", b =>
+                {
+                    b.Navigation("Prescription");
                 });
 #pragma warning restore 612, 618
         }

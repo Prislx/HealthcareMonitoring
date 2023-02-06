@@ -24,10 +24,10 @@ namespace HealthcareMonitoring.Server.Controllers
 
         // GET: api/Appointments
         [HttpGet]
-        public async Task<IActionResult> GetAppointment()
+        public async Task<IActionResult> GetAppointments()
         {
-            var appointment = await _unitofwork.Appointments.GetAll();
-            return Ok(appointment);
+            var appointments = await _unitofwork.Appointments.GetAll(includes: q => q.Include(x =>x.Patient).Include(x => x.Staff));
+            return Ok(appointments);
         }
 
         // GET: api/Appointments/5
@@ -40,7 +40,7 @@ namespace HealthcareMonitoring.Server.Controllers
             {
                 return NotFound();
             }
-            return appointment;
+            return Ok(appointment);
         }
 
         // PUT: api/Appointments/5

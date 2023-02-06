@@ -40,7 +40,7 @@ namespace HealthcareMonitoring.Server.Controllers
             {
                 return NotFound();
             }
-            return prescription;
+            return Ok(prescription);
         }
 
         // PUT: api/Prescriptions/5

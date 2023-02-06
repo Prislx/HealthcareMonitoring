@@ -13,20 +13,21 @@ namespace HealthcareMonitoring.Server.Configurations.Entities
         public void Configure(EntityTypeBuilder<Medicine> builder)
         {
             builder.HasData(
-
                 new Medicine
                 {
-                    Id = 1,
-                    MedName= "Azithromycin",
-                    Description = "Antibiotic for bacterial infection",
-                    ExpiryDate = new DateTime(2023,6,2),
+                    Id = 2,
+                    MedName = "brufen",
+                    Description = "helps with body pain",
+                    ExpiryDate = new DateTime(2023,6,5),
                     Quantity = 200,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
                     UpdatedBy = "System"
-                });
-           
+
+
+                }
+            );
         }
     }
 }

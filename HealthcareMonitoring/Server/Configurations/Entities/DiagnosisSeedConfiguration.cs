@@ -13,16 +13,19 @@ namespace HealthcareMonitoring.Server.Configurations.Entities
         public void Configure(EntityTypeBuilder<Diagnosis> builder)
         {
             builder.HasData(
-            new Diagnosis
-            {
-                Id = 1,
-                Description = "Back of throat is inflamed ",
-                dateTime = new DateTime(2022, 5, 2),
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now,
-                CreatedBy = "System",
-                UpdatedBy = "System"
-            });
+                new Diagnosis
+                {
+                    Id = 2,
+                    Description = "Inflamed throat with sores",
+                    DateTime = new DateTime(2022, 5, 2),
+                    AppointmentId = 2,
+                    PrescriptionId = 2,
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System"
+                }
+            );
         }
     }
 }

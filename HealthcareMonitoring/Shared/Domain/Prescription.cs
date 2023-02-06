@@ -9,6 +9,6 @@ namespace HealthcareMonitoring.Shared.Domain
     public class Prescription : BaseDomainModel
     {
         public string Description { get; set; }
-        public DateTime dateTime { get; set; }
+        public DateTime DateTime { get; set; }
     }
 }

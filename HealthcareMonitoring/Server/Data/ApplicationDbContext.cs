@@ -1,4 +1,5 @@
-﻿using HealthcareMonitoring.Server.Configurations.Entities;
+﻿
+using HealthcareMonitoring.Server.Configurations.Entities;
 using HealthcareMonitoring.Server.Models;
 using HealthcareMonitoring.Shared.Domain;
 using IdentityServer4.EntityFramework.Options;
@@ -41,5 +42,7 @@ namespace HealthcareMonitoring.Server.Data
             builder.ApplyConfiguration(new UserRoleSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfiguration());
         }
+
+
+        }
     }
-}

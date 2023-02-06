@@ -27,7 +27,7 @@ namespace HealthcareMonitoring.Server.Controllers
 
         public async Task<IActionResult> GetPrescMed()
         {
-            var PrescMed = await _unitofwork.PrescMeds.GetAll();
+            var PrescMed = await _unitofwork.PrescMeds.GetAll(includes: q => q.Include(x => x.Medicine).Include(x => x.Prescription));
             return Ok(PrescMed);
         }
       
@@ -36,14 +36,14 @@ namespace HealthcareMonitoring.Server.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PrescMed>> GetPrescMed(int id)
         {
-            var PrescMed = await _unitofwork.PrescMeds.Get(q => q.Id == id);
+            var prescMed = await _unitofwork.PrescMeds.Get(q => q.Id == id);
 
-            if (PrescMed == null)
+            if (prescMed == null)
             {
                 return NotFound();
             }
 
-            return PrescMed;
+            return Ok(prescMed);
         }
 
         // PUT: api/PrescMeds/5

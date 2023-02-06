@@ -36,14 +36,14 @@ namespace HealthcareMonitoring.Server.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Staff>> GetStaff(int id)
         {
-            var Staff = await _unitofwork.Staffs.Get(q => q.Id == id);
+            var staff = await _unitofwork.Staffs.Get(q => q.Id == id);
 
-            if (Staff == null)
+            if (staff == null)
             {
                 return NotFound();
             }
 
-            return Staff;
+            return Ok(staff);
         }
 
         // PUT: api/Staffs/5

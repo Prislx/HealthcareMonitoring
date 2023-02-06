@@ -1,5 +1,7 @@
 using HealthcareMonitoring.Server.Data;
+using HealthcareMonitoring.Server.IRepository;
 using HealthcareMonitoring.Server.Models;
+using HealthcareMonitoring.Server.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +45,8 @@ namespace HealthcareMonitoring.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

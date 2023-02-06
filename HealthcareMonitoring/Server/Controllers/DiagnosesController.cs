@@ -26,7 +26,7 @@ namespace HealthcareMonitoring.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDiagnosis()
         {
-            var diagnosis = await _unitofwork.Diagnoses.GetAll();
+            var diagnosis = await _unitofwork.Diagnoses.GetAll(includes: q => q.Include(x => x.Appointment).Include(x => x.Prescription));
             return Ok(diagnosis);
         }
 
@@ -41,7 +41,7 @@ namespace HealthcareMonitoring.Server.Controllers
                 return NotFound();
             }
 
-            return diagnosis;
+            return Ok(diagnosis);
         }
 
         // PUT: api/Diagnoses/5

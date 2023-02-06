@@ -13,19 +13,19 @@ namespace HealthcareMonitoring.Server.Configurations.Entities
         public void Configure(EntityTypeBuilder<PrescMed> builder)
         {
             builder.HasData(
-
-               new PrescMed
-               {
-                   Id = 1,
-                   MedQty = 10,
-                   dosage = "2 per day, after meal",
-                   DateCreated = DateTime.Now,
-                   DateUpdated = DateTime.Now,
-                   CreatedBy = "System",
-                   UpdatedBy = "System"
-               });
-
-
+                new PrescMed
+                {
+                    Id = 2,
+                    MedQty = 6,
+                    MedicineID = 2,
+                    PrescriptionID = 2,
+                    Dosage = "Take 2 a day after meals.",
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System"
+                }
+            );
         }
     }
 }
