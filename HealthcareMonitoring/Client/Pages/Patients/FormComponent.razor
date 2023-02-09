@@ -1,0 +1,74 @@
+﻿<h3>FormComponent</h3>
+
+<EditForm Model="@patient" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Name: </label>
+        <div>
+            <InputText @bind-Value="@patient.PatientName" class="form-control" />
+            <ValidationMessage For="@(() => patient.PatientName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>NRIC: </label>
+        <div>
+            <InputText @bind-Value="@patient.NRIC" class="form-control" />
+            <ValidationMessage For="@(() => patient.NRIC)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Gender : </label>
+        <div>
+            <InputText @bind-Value="@patient.Gender" class="form-control" />
+            <ValidationMessage For="@(() => patient.Gender)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Address: </label>
+        <div>
+            <InputText @bind-Value="@patient.Address" class="form-control" />
+            <ValidationMessage For="@(() => patient.Address)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Contact Number: </label>
+        <div>
+            <InputNumber @bind-Value="@patient.ContactNo" class="form-control" />
+            <ValidationMessage For="@(() => patient.ContactNo)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Email Address: </label>
+        <div>
+            <InputText @bind-Value="@patient.Email" class="form-control" />
+            <ValidationMessage For="@(() => patient.Email)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Year of Birth: </label>
+        <div>
+            <InputNumber @bind-Value="@patient.DOB" class="form-control" />
+            <ValidationMessage For="@(() => patient.DOB)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block">
+        @ButtonText
+    </button>
+</EditForm>
+
+@code {
+    [Parameter] public Patient patient { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+
+}

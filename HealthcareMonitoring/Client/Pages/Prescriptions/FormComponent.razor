@@ -1,0 +1,33 @@
+﻿<h3>FormComponent</h3>
+
+<EditForm Model="@prescription" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Name: </label>
+        <div>
+            <InputText @bind-Value="@prescription.Description" class="form-control" />
+            <ValidationMessage For="@(() => prescription.Description)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>NRIC: </label>
+        <div>
+            <InputDate @bind-Value="@prescription.DateTime" class="form-control" />
+            <ValidationMessage For="@(() => prescription.DateTime)" />
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success btn-block">
+        @ButtonText
+    </button>
+</EditForm>
+
+@code {
+    [Parameter] public Prescription prescription { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}

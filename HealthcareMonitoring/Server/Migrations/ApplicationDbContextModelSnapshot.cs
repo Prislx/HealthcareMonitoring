@@ -4,16 +4,14 @@ using HealthcareMonitoring.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace HealthcareMonitoring.Server.Data.Migrations
+namespace HealthcareMonitoring.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230205105209_AddedDefaultDataAndUser")]
-    partial class AddedDefaultDataAndUser
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,7 +94,7 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d521f132-6c70-40c9-ab08-1d280b6daf93",
+                            ConcurrencyStamp = "c39fe672-d6e5-423c-8db9-f3f3c16001b9",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -104,9 +102,9 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAECZmppW8Cfx8Pvf9sHLnv8KiFuhjaQ4OvQZnX4NYtAp0c6zgNC/GDd8DChBkYkb5MQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG0YcnlA5qx5oqPl2XW8dDutKEK7GCXRC4MilVyeSBaDkRwMbA8O/iH7p9QDjDMImw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2d02a8ff-0771-427e-b410-fce458fbe2ac",
+                            SecurityStamp = "007b1a3a-125a-48cb-9314-d338cd1c4c4b",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -162,8 +160,8 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                             Id = 2,
                             AppdateTime = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(2050),
-                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(2065),
+                            DateCreated = new DateTime(2023, 2, 7, 23, 8, 26, 244, DateTimeKind.Local).AddTicks(1751),
+                            DateUpdated = new DateTime(2023, 2, 7, 23, 8, 26, 244, DateTimeKind.Local).AddTicks(1768),
                             Description = "Sore throat",
                             PatientId = 2,
                             StaffId = 2,
@@ -212,9 +210,9 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                             Id = 2,
                             AppointmentId = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(4923),
+                            DateCreated = new DateTime(2023, 2, 7, 23, 8, 26, 244, DateTimeKind.Local).AddTicks(6390),
                             DateTime = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(4928),
+                            DateUpdated = new DateTime(2023, 2, 7, 23, 8, 26, 244, DateTimeKind.Local).AddTicks(6399),
                             Description = "Inflamed throat with sores",
                             PrescriptionId = 2,
                             UpdatedBy = "System"
@@ -261,8 +259,8 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(7457),
-                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 547, DateTimeKind.Local).AddTicks(7462),
+                            DateCreated = new DateTime(2023, 2, 7, 23, 8, 26, 245, DateTimeKind.Local).AddTicks(405),
+                            DateUpdated = new DateTime(2023, 2, 7, 23, 8, 26, 245, DateTimeKind.Local).AddTicks(413),
                             Description = "helps with body pain",
                             ExpiryDate = new DateTime(2023, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MedName = "brufen",
@@ -323,8 +321,8 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                             ContactNo = 123456789,
                             CreatedBy = "System",
                             DOB = -1971,
-                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(343),
-                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(347),
+                            DateCreated = new DateTime(2023, 2, 7, 23, 8, 26, 245, DateTimeKind.Local).AddTicks(5137),
+                            DateUpdated = new DateTime(2023, 2, 7, 23, 8, 26, 245, DateTimeKind.Local).AddTicks(5145),
                             Email = "Paterson@mail.com",
                             Gender = "Male",
                             NRIC = "S1234567A",
@@ -375,8 +373,8 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(2574),
-                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(2578),
+                            DateCreated = new DateTime(2023, 2, 7, 23, 8, 26, 245, DateTimeKind.Local).AddTicks(9108),
+                            DateUpdated = new DateTime(2023, 2, 7, 23, 8, 26, 245, DateTimeKind.Local).AddTicks(9116),
                             Dosage = "Take 2 a day after meals.",
                             MedQty = 6,
                             MedicineID = 2,
@@ -429,9 +427,9 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(4579),
+                            DateCreated = new DateTime(2023, 2, 7, 23, 8, 26, 246, DateTimeKind.Local).AddTicks(2228),
                             DateTime = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 548, DateTimeKind.Local).AddTicks(4582),
+                            DateUpdated = new DateTime(2023, 2, 7, 23, 8, 26, 246, DateTimeKind.Local).AddTicks(2235),
                             Description = "Drink Warm water and take the medicine for 5 days ",
                             UpdatedBy = "System"
                         });
@@ -482,8 +480,8 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                             Address = "Blk 98 Tampines Ave 3 ",
                             ContactNo = 99456789,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 2, 5, 18, 52, 8, 545, DateTimeKind.Local).AddTicks(3217),
-                            DateUpdated = new DateTime(2023, 2, 5, 18, 52, 8, 545, DateTimeKind.Local).AddTicks(9557),
+                            DateCreated = new DateTime(2023, 2, 7, 23, 8, 26, 241, DateTimeKind.Local).AddTicks(4848),
+                            DateUpdated = new DateTime(2023, 2, 7, 23, 8, 26, 242, DateTimeKind.Local).AddTicks(3279),
                             Email = "Peter@mail.com",
                             Gender = "Male",
                             StaffName = "Peter",
@@ -624,14 +622,14 @@ namespace HealthcareMonitoring.Server.Data.Migrations
                         new
                         {
                             Id = "ad2bcf0c-20db-474f-8407-5a6b159518ba",
-                            ConcurrencyStamp = "00558650-7d49-4fff-b965-33a2a2f88021",
+                            ConcurrencyStamp = "1c883599-978d-4cb3-8f9a-3e589784ad11",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "bd2bcf0c-20db-474f-8407-5a6b159518bb",
-                            ConcurrencyStamp = "f98dc6a0-375b-44ae-a156-5825ddb3207a",
+                            ConcurrencyStamp = "4a0fe248-cec2-4757-b6d1-b872be1d7299",
                             Name = "User",
                             NormalizedName = "USER"
                         });

@@ -1,0 +1,78 @@
+﻿@inject HttpClient _client
+<h3>FormComponent</h3>
+
+<EditForm Model="@diagnosis" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Appointment: </label>
+        <div>
+            <InputSelect @bind-Value="diagnosis.AppointmentId" class="form-control">
+                <option value="">-- Select Appointment --</option>
+                @if (Appointments != null)
+                {
+                    foreach (var appointment in Appointments)
+                    {
+                        <option value="@appointment.Id">@appointment.AppdateTime</option>}
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => diagnosis.AppointmentId)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Prescription: </label>
+        <div>
+            <InputSelect @bind-Value="diagnosis.PrescriptionId" class="form-control">
+                <option value="">-- Select Prescription --</option>
+                @if (Prescriptions != null)
+                {
+                    foreach (var prescription in Prescriptions)
+                    {
+                        <option value="@prescription.Id">@prescription.Description</option>}
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => diagnosis.PrescriptionId)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description: </label>
+        <div>
+
+            <InputText @bind-Value="@diagnosis.Description" class="form-control" />
+            <ValidationMessage For="@(() => diagnosis.Description)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Date : </label>
+        <div>
+            <InputDate @bind-Value="@diagnosis.DateTime" class="form-control" />
+            <ValidationMessage For="@(() => diagnosis.DateTime)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block">
+        @ButtonText
+    </button>
+</EditForm>
+
+@code {
+    [Parameter] public Diagnosis diagnosis { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+
+    private IList<Appointment> Appointments;
+    private IList<Prescription> Prescriptions;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        Appointments = await _client.GetFromJsonAsync<List<Appointment>>($"{Endpoints.AppointmentsEndpoint}");
+        Prescriptions = await _client.GetFromJsonAsync<List<Prescription>>($"{Endpoints.PrescriptionsEndpoint}");
+
+    }
+}

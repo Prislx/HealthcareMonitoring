@@ -3,49 +3,57 @@
 @inject IJSRuntime js
 @attribute [Authorize]
 <h3 class="card-title">Patients</h3>
+
+<a href="/patients/create/" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Patients
+</a>
+<br />
+<br />
+
 @if (Patients == null)
 {
-<div class="alert alert-info">Loading Patients...</div> }
-            else
+    <div class="alert alert-info">Loading Patients...</div> }
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>PatientName</th>
+                <th>NRIC</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>ContactNo</th>
+                <th>DOB</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var patient in Patients)
             {
-<table class="table table-responsive">
-    <thead>
-        <tr>
-            <th>PatientName</th>
-            <th>NRIC</th>
-            <th>Gender</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>ContactNo</th>
-            <th>DOB</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var patient in Patients)
-        {
-        <tr>
-            <td>@patient.Id</td>
-            <td>@patient.PatientName</td>
-            <td>@patient.NRIC</td>
-            <td>@patient.Gender</td>
-            <td>@patient.Address</td>
-            <td>@patient.Email</td>
-            <td>@patient.ContactNo</td>
-            <td>@patient.DOB</td>
-            <td>
-                <a href="/patients/view/@patient.Id" class="btn btn-primary">
-                    <span class="oi oi-book"></span>
-                </a>
-                <a href="/patients/edit/@patient.Id" class="btn btn-warning">
-                    <span class="oi oi-pencil"></span>
-                </a>
-                <button class="btn btn-danger" @onclick="@(()=>Delete(patient.Id))">
-                    <span class="oi oi-delete"></span>
-                </button>
-            </td>
-        </tr>}
-    </tbody>
-</table>}
+                <tr>
+                    <td>@patient.PatientName</td>
+                    <td>@patient.NRIC</td>
+                    <td>@patient.Gender</td>
+                    <td>@patient.Address</td>
+                    <td>@patient.Email</td>
+                    <td>@patient.ContactNo</td>
+                    <td>@patient.DOB</td>
+                    <td>
+                        <a href="/patients/view/@patient.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/patients/edit/@patient.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(patient.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+}
+        </tbody>
+    </table>}
 
 @code {
     private List<Patient> Patients;

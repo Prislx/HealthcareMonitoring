@@ -1,14 +1,8 @@
-﻿@page "/staffs/create/"
-@inject HttpClient _client
-@inject NavigationManager _navManager
+﻿@inject HttpClient _client
 
-<h3 class="card-title">Create New Staff</h3>
-<hr />
-<br />
+<h3>FormComponent</h3>
 
-
-
-<EditForm Model="@staff" OnValidSubmit="CreateStaff">
+<EditForm Model="@staff" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
@@ -57,14 +51,12 @@
 
 
     <button type="submit" class="btn btn-success btn-block">
-        Create Staff
+        @ButtonText
     </button>
 </EditForm>
 
-@code { Staff staff = new Staff();
-
-    private async Task CreateStaff()
-    {
-        await _client.PostAsJsonAsync(Endpoints.StaffsEndpoint, staff);
-        _navManager.NavigateTo("/staffs/");
-    } }
+@code {
+    [Parameter] public Staff staff { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}

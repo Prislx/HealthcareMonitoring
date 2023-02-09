@@ -6,6 +6,13 @@
 
 <h3 class="card-title">Make Diagnoses</h3>
 
+<a href="/diagnosis/create/" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Appointment
+</a>
+<br />
+<br />
+
 @if (Diagnoses == null)
 {
     <div class="alert alert-info">Loading Diagnoses...</div> }
@@ -14,6 +21,7 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
+                <th>DiagnosisID</th>
                 <th>Description</th>
                 <th>DateTime</th>
             </tr>
@@ -21,23 +29,23 @@ else
         <tbody>
             @foreach (var diagnosis in Diagnoses)
             {
-            <tr>
-                <td>@diagnosis.Id</td>
-                <td>@diagnosis.Description</td>
-                <td>@diagnosis.DateTime.Date.ToString("dd MMMM yyyy")</td>
-                <td>
-                    <a href="/diagnoses/view/@diagnosis.Id" class="btn btn-primary">
-                        <span class="oi oi-book"></span>
-                    </a>
-                    <a href="/diagnoses/edit/@diagnosis.Id" class="btn btn-warning">
-                        <span class="oi oi-pencil"></span>
-                    </a>
-                    <button class="btn btn-danger" @onclick="@(()=>Delete(diagnosis.Id))">
-                        <span class="oi oi-delete"></span>
-                    </button>
-                </td>
-            </tr>
-}
+                <tr>
+                    <td>@diagnosis.Id</td>
+                    <td>@diagnosis.Description</td>
+                    <td>@diagnosis.DateTime.Date.ToString("dd MMMM yyyy")</td>
+                    <td>
+                        <a href="/diagnoses/view/@diagnosis.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/diagnoses/edit/@diagnosis.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(diagnosis.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>}
 
