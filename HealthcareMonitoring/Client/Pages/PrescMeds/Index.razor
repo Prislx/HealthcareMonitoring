@@ -10,7 +10,7 @@
 
 <a href="/prescmeds/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
-    Create New Appointment
+    Create New Med Prescription
 </a>
 <br />
 <br />
@@ -24,8 +24,11 @@ else
         <thead>
             <tr>
                 <th>PrescMedId</th>
+                <th>Medicine Name</th>
+                <th>Prescription</th>
                 <th>MedQty</th>
                 <th>Dosage</th>
+
             </tr>
         </thead>
         <tbody>
@@ -33,6 +36,8 @@ else
             {
                 <tr>
                     <td>@prescMed.Id</td>
+                    <td>@prescMed.Medicine.MedName</td>
+                    <td>@prescMed.PrescriptionID</td>
                     <td>@prescMed.MedQty</td>
                     <td>@prescMed.Dosage</td>
                     <td>

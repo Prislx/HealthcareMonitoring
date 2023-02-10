@@ -19,7 +19,7 @@
                 {
                     foreach (var appointment in Appointments)
                     {
-<option value="@appointment.Id">@appointment.AppdateTime</option>}
+<option value="@appointment.Id">@appointment.Description</option>}
 }
             </InputSelect>
             <ValidationMessage For="@(() => diagnosis.AppointmentId)" />
@@ -62,6 +62,7 @@
     <button type="submit" class="btn btn-success btn-block">
         Create diagnosis
     </button>
+   
 </EditForm>
 
 @code { Diagnosis diagnosis = new Diagnosis();

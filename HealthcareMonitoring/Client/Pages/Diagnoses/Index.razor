@@ -6,9 +6,9 @@
 
 <h3 class="card-title">Make Diagnoses</h3>
 
-<a href="/diagnosis/create/" class="btn btn-secondary">
+<a href="/diagnoses/create/" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
-    Create New Appointment
+    Enter New Diagnosis
 </a>
 <br />
 <br />
@@ -22,7 +22,9 @@ else
         <thead>
             <tr>
                 <th>DiagnosisID</th>
+                <th>AppointmentID</th>
                 <th>Description</th>
+                <th>Prescription</th>
                 <th>DateTime</th>
             </tr>
         </thead>
@@ -31,8 +33,10 @@ else
             {
                 <tr>
                     <td>@diagnosis.Id</td>
+                    <td>@diagnosis.AppointmentId</td>
+                    <td>@diagnosis.PrescriptionId</td>
                     <td>@diagnosis.Description</td>
-                    <td>@diagnosis.DateTime.Date.ToString("dd MMMM yyyy")</td>
+                    <td>@diagnosis.DateTime</td>
                     <td>
                         <a href="/diagnoses/view/@diagnosis.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

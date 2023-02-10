@@ -27,6 +27,7 @@ namespace HealthcareMonitoring.Server.Controllers
 
         public async Task<IActionResult> GetMedicine()
         {
+            
             var Medicine = await _unitofwork.Medicines.GetAll();
             return Ok(Medicine);
         }

@@ -6,7 +6,7 @@
 
 <a href="/prescriptions/create/" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
-    Create New Appointment
+    Create New Prescriptions
 </a>
 <br />
 <br />
@@ -30,7 +30,7 @@ else
                 <tr>
                     <td>@prescription.Id</td>
                     <td>@prescription.Description</td>
-                    <td>@prescription.DateTime.Date.ToString("dd MMMM yyyy")</td>
+                    <td>@prescription.DateTime</td>
                     <td>
                         <a href="/prescriptions/view/@prescription.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
@@ -46,6 +46,9 @@ else
 }
         </tbody>
     </table>}
+
+<HealthcareMonitoring.Client.Pages.PrescMeds.Index/>
+
 
 @code {
     private List<Prescription> Prescriptions;

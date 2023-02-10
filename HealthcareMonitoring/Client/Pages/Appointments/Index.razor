@@ -22,6 +22,8 @@ else
         <thead>
             <tr>
                 <th>Appointment Number</th>
+                <th>Patient </th>
+                <th>Staff </th>
                 <th>Description</th>
                 <th>AppdateTime</th>
 
@@ -30,22 +32,24 @@ else
         <tbody>
             @foreach (var appointment in Appointments)
             {
-                <tr>
-                    <td>@appointment.Id</td>
-                    <td>@appointment.Description</td>
-                    <td>@appointment.AppdateTime.Date.ToString("dd MMMM yyyy")</td>
-                    <td>
-                        <a href="/appointments/view/@appointment.Id" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
-                        </a>
-                        <a href="/appointments/edit/@appointment.Id" class="btn btn-warning">
-                            <span class="oi oi-pencil"></span>
-                        </a>
-                        <button class="btn btn-danger" @onclick="@(()=>Delete(appointment.Id))">
-                            <span class="oi oi-delete"></span>
-                        </button>
-                    </td>
-                </tr>
+            <tr>
+                <td>@appointment.Id</td>
+                <td>@appointment.Patient.PatientName</td>
+                <td>@appointment.Staff.StaffName</td>
+                <td>@appointment.Description</td>
+                <td>@appointment.AppdateTime</td>
+                <td>
+                    <a href="/appointments/view/@appointment.Id" class="btn btn-primary">
+                        <span class="oi oi-book"></span>
+                    </a>
+                    <a href="/appointments/edit/@appointment.Id" class="btn btn-warning">
+                        <span class="oi oi-pencil"></span>
+                    </a>
+                    <button class="btn btn-danger" @onclick="@(()=>Delete(appointment.Id))">
+                        <span class="oi oi-delete"></span>
+                    </button>
+                </td>
+            </tr>
             }
         </tbody>
     </table>}

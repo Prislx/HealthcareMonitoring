@@ -4,7 +4,7 @@
 
 <h3>Prescriptions</h3>
 
-<FormComponent ButtonText="Update" OnValidSubmit="EditMedicine" prescription="prescription" />
+<FormComponent ButtonText="Update" OnValidSubmit="EditPrescription" prescription="prescription" />
 
 @code {
     [Parameter] public int id { get; set; }
@@ -15,7 +15,7 @@
         prescription = await _client.GetFromJsonAsync<Prescription>($"{Endpoints.PrescriptionsEndpoint}/{id}");
     }
 
-    async Task EditMedicine()
+    async Task EditPrescription()
     {
         await _client.PutAsJsonAsync($"{Endpoints.PrescriptionsEndpoint}/{id}", prescription);
         _navManager.NavigateTo("/prescriptions/");
