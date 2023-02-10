@@ -14,7 +14,7 @@ namespace HealthcareMonitoring.Shared.Domain
         public int? MedicineID { get; set; }
         public virtual Medicine Medicine { get; set; }
         public int? PrescriptionID { get; set; }
-        public virtual List<Prescription> Prescription { get; set; }
+        public virtual Prescription Prescription { get; set; }
         public string Dosage { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

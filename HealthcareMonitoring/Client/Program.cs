@@ -1,3 +1,4 @@
+using HealthcareMonitoring.Client.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +28,9 @@ namespace HealthcareMonitoring.Client
             builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("HealthcareMonitoring.ServerAPI"));
 
             builder.Services.AddApiAuthorization();
+
             builder.Services.AddHttpClientInterceptor();
+            builder.Services.AddScoped<HttpInterceptorService>();
             await builder.Build().RunAsync();
         }
     }

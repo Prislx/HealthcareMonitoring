@@ -27,6 +27,7 @@ namespace HealthcareMonitoring.Server.Controllers
 
         public async Task<IActionResult> GetPrescMed()
         {
+            
             var PrescMed = await _unitofwork.PrescMeds.GetAll(includes: q => q.Include(x => x.Medicine).Include(x => x.Prescription));
             return Ok(PrescMed);
         }

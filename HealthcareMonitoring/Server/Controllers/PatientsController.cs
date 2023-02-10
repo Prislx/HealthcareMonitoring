@@ -26,6 +26,7 @@ namespace HealthcareMonitoring.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPatient()
         {
+            
             var patient = await _unitofwork.Patients.GetAll();
             return Ok(patient);
         }

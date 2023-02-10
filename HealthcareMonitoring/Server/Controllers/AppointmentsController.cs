@@ -26,6 +26,7 @@ namespace HealthcareMonitoring.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAppointments()
         {
+            
             var appointments = await _unitofwork.Appointments.GetAll(includes: q => q.Include(x =>x.Patient).Include(x => x.Staff));
             return Ok(appointments);
         }

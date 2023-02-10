@@ -14,8 +14,8 @@ namespace HealthcareMonitoring.Shared.Domain
         public DateTime? DateTime { get; set; }
         public int? AppointmentId { get; set; }
         public int? PrescriptionId { get; set; }
-        public virtual List<Prescription> Prescription { get; set; }
-        public virtual List<Appointment>  Appointment { get; set; }
+        public virtual Prescription Prescription { get; set; }
+        public virtual List<Appointment> Appointment { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

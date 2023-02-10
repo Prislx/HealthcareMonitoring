@@ -26,6 +26,7 @@ namespace HealthcareMonitoring.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDiagnosis()
         {
+            
             var diagnosis = await _unitofwork.Diagnoses.GetAll(includes: q => q.Include(x => x.Appointment).Include(x => x.Prescription));
             return Ok(diagnosis);
         }

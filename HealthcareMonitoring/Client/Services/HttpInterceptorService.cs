@@ -6,7 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Toolbelt.Blazor;
 
-namespace CarRentalManagement.Client.Services
+namespace HealthcareMonitoring.Client.Services
 {
     public class HttpInterceptorService
     {
