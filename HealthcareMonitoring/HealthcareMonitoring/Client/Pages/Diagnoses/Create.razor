@@ -1,0 +1,85 @@
+﻿@page "/diagnoses/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3 class="card-title">Create New Diagnosis</h3>
+<hr />
+<br />
+
+<EditForm Model="@diagnosis" OnValidSubmit="CreateDiagnosis">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Appointment: </label>
+        <div>
+            <InputSelect @bind-Value="diagnosis.AppointmentId" class="form-control">
+                <option value="">-- Select Appointment --</option>
+                @if (Appointments != null)
+                {
+                    foreach (var appointment in Appointments)
+                    {
+<option value="@appointment.Id">@appointment.Description</option>}
+}
+            </InputSelect>
+            <ValidationMessage For="@(() => diagnosis.AppointmentId)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Prescription: </label>
+        <div>
+            <InputSelect @bind-Value="diagnosis.PrescriptionId" class="form-control">
+                <option value="">-- Select Prescription --</option>
+                @if (Prescriptions != null)
+                {
+                    foreach (var prescription in Prescriptions)
+                    {
+<option value="@prescription.Id">@prescription.Description</option>}
+}
+            </InputSelect>
+            <ValidationMessage For="@(() => diagnosis.PrescriptionId)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description: </label>
+        <div>
+
+            <InputText @bind-Value="@diagnosis.Description" class="form-control" />
+            <ValidationMessage For="@(() => diagnosis.Description)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Date : </label>
+        <div>
+            <InputDate @bind-Value="@diagnosis.DateTime" class="form-control" />
+            <ValidationMessage For="@(() => diagnosis.DateTime)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block">
+        Create diagnosis
+    </button>
+   
+</EditForm>
+
+@code { Diagnosis diagnosis = new Diagnosis();
+
+    private IList<Appointment> Appointments;
+    private IList<Prescription> Prescriptions;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        Appointments = await _client.GetFromJsonAsync<List<Appointment>>($"{Endpoints.AppointmentsEndpoint}");
+        Prescriptions = await _client.GetFromJsonAsync<List<Prescription>>($"{Endpoints.PrescriptionsEndpoint}");
+
+    }
+
+    private async Task CreateDiagnosis()
+    {
+        await _client.PostAsJsonAsync(Endpoints.AppointmentsEndpoint, diagnosis);
+        _navManager.NavigateTo("/diagnoses/");
+    } }

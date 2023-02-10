@@ -1,0 +1,23 @@
+﻿@page "/diagnoses/edit/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3>Diagnosis</h3>
+
+<FormComponent ButtonText="Update" OnValidSubmit="EditDiagnosis" diagnosis="diagnosis" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Diagnosis diagnosis = new Diagnosis();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        diagnosis = await _client.GetFromJsonAsync<Diagnosis>($"{Endpoints.DiagnosesEndpoint}/{id}");
+    }
+
+    async Task EditDiagnosis()
+    {
+        await _client.PutAsJsonAsync($"{Endpoints.DiagnosesEndpoint}/{id}", diagnosis);
+        _navManager.NavigateTo("/diagnoses/");
+    }
+}}

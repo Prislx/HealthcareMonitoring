@@ -40,7 +40,7 @@ else
                 <td>@appointment.Patient.PatientName</td>
                 <td>@appointment.Staff.StaffName</td>
                 <td>@appointment.Description</td>
-                <td>@appointment.AppdateTime</td>
+                <td>@appointment.AppdateTime?.ToString("dd-MMMM-yyyy")</td>
                 <td>
                     <a href="/appointments/view/@appointment.Id" class="btn btn-primary">
                         <span class="oi oi-book"></span>

@@ -47,7 +47,7 @@ namespace HealthcareMonitoring.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
-            services.AddControllersWithViews();
+           
             services.AddRazorPages();
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();

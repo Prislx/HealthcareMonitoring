@@ -1,0 +1,92 @@
+﻿@page "/prescmeds/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
+
+<h3 class="card-title">Prescribe Med</h3>
+
+
+
+<a href="/prescmeds/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Med Prescription
+</a>
+<br />
+<br />
+
+@if (PrescMeds == null)
+{
+    <div class="alert alert-info">Loading PrescMeds...</div> }
+else
+{
+<table class="table table-responsive" id="prescmedsTable">
+    <thead>
+        <tr>
+            <th>PrescMedId</th>
+            <th>Medicine Name</th>
+            <th>Prescription</th>
+            <th>MedQty</th>
+            <th>Dosage</th>
+            <th>View/Edit/Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prescMed in PrescMeds)
+        {
+            <tr>
+                <td>@prescMed.Id</td>
+                <td>@prescMed.Medicine.MedName</td>
+                <td>@prescMed.Prescription.Description</td>
+                <td>@prescMed.MedQty</td>
+                <td>@prescMed.Dosage</td>
+                <td>
+                    <a href="/prescMeds/view/@prescMed.Id" class="btn btn-primary">
+                        <span class="oi oi-book"></span>
+                    </a>
+                    <a href="/prescMeds/edit/@prescMed.Id" class="btn btn-warning">
+                        <span class="oi oi-pencil"></span>
+                    </a>
+                    <button class="btn btn-danger" @onclick="@(()=>Delete(prescMed.Id))">
+                        <span class="oi oi-delete"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>}
+
+@code {
+    private List<PrescMed> PrescMeds;
+
+    protected async override Task OnInitializedAsync()
+    {
+        _interceptor.MonitorEvent();
+        PrescMeds = await _client.GetFromJsonAsync<List<PrescMed>>($"{Endpoints.PrescMedsEndpoint}");
+    }
+
+    async Task Delete(int prescmedId)
+    {
+        var prescmed = PrescMeds.First(q => q.Id == prescmedId);
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {prescmed.Id}?");
+        if (confirm)
+        {
+            await _client.DeleteAsync($"{Endpoints.PrescMedsEndpoint}/{prescmedId}");
+            await OnInitializedAsync();
+        }
+    }
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#prescmedsTable");
+    }
+
+
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
+        js.InvokeVoidAsync("DataTablesDispose", "#prescmedsTable");
+
+    }
+
+}

@@ -18,7 +18,7 @@ namespace HealthcareMonitoring.Shared.Domain
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (AppdateTime!=null)
+            if (AppdateTime != null)
             {
                 if (AppdateTime <= DateTime.Now)
                 {

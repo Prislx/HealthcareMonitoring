@@ -39,7 +39,7 @@ else
                 <td>@diagnosis.AppointmentId</td>
                 <td>@diagnosis.Prescription.Description</td>
                 <td>@diagnosis.Description</td>
-                <td>@diagnosis.DateTime</td>
+                <td>@diagnosis.DateTime?.ToString("dd-MMMM-yyyy")</td>
                 <td>
                     <a href="/diagnoses/view/@diagnosis.Id" class="btn btn-primary">
                         <span class="oi oi-book"></span>

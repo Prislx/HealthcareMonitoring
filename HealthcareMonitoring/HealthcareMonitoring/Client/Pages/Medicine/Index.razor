@@ -1,0 +1,101 @@
+﻿@page "/medicines/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
+
+
+
+<h3 class="card-title">Make Medicines</h3>
+
+<a href="/medicines/create/" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>Create New Medicine
+</a>
+<br />
+<br />
+
+@if (Medicines == null)
+{
+    <div class="alert alert-info">Loading Medicines...</div> }
+else
+{
+<table class="table table-responsive" id="medicinesTable">
+    <thead>
+        <tr>
+            <th>MedicineId</th>
+            <th>MedName</th>
+            <th>Description</th>
+            <th>ExpiryDate</th>
+            <th>Quantity</th>
+            <th>View/Edit/Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Medicine in Medicines)
+        {
+            <tr>
+                <td>@Medicine.Id</td>
+                <td>@Medicine.MedName</td>
+                <td>@Medicine.Description</td>
+                <td>@Medicine.ExpiryDate</td>
+                <td>@Medicine.Quantity</td>
+                <td>
+                    <a href="/Medicines/view/@Medicine.Id" class="btn btn-primary">
+                        <span class="oi oi-book"></span>
+                    </a>
+                    <a href="/Medicines/edit/@Medicine.Id" class="btn btn-warning">
+                        <span class="oi oi-pencil"></span>
+                    </a>
+                    <button class="btn btn-danger" @onclick="@(()=>Delete(Medicine.Id))">
+                        <span class="oi oi-delete"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>}
+
+
+@code {
+    private List<Medicine> Medicines;
+
+    protected async override Task OnInitializedAsync()
+    {
+        _interceptor.MonitorEvent();
+
+        Medicines = await _client.GetFromJsonAsync<List<Medicine>>($"{Endpoints.MedicinesEndpoint}");
+    }
+
+    async Task Delete(int medicineId)
+    {
+        var medicine = Medicines.First(q => q.Id == medicineId);
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {medicine.MedName}?");
+        if (confirm)
+        {
+            await _client.DeleteAsync($"{Endpoints.MedicinesEndpoint}/{medicineId}");
+            await OnInitializedAsync();
+        }
+    }
+
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#medicinesTable");
+    }
+
+
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
+        js.InvokeVoidAsync("DataTablesDispose", "#medicinesTable");
+
+    }
+
+
+
+
+
+
+}
+
